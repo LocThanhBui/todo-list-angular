@@ -5,8 +5,8 @@
         <p>Add Todo</p>
         <div class="form-group d-flex ">
           <input type="text" class="" [(ngModel)]="todoItem">
-          <button type="submit" class="mx-4" (click)="addTodoFrm()">Add</button>
-          <button type="submit" class="mx-8 text-decoration-none"  >
+          <button type="submit" class="mx-4" (click)="addTodo(todoItem)">Add</button>
+          <button type="submit" class="mx-8 text-decoration-none">
             <a routerLink="/list">Open Todo List</a>
           </button>
         </div>

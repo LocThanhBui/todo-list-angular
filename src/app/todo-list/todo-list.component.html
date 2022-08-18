@@ -7,11 +7,14 @@
     <th></th>
   </tr>
   </thead>
-  <tbody >
+  <tbody>
   <tr *ngFor="let item of todoList">
     <td scope="row">{{item.id}}</td>
-    <td>{{item.title}}</td>
-    <td> <button type="submit" class="mx-4 btn btn-danger" (click)="delete(item.id)">Delete</button></td>
+    <td scope="row">{{item.title}}</td>
+    <td></td>
+    <td>
+      <button type="submit" class="mx-4 btn btn-danger" (click)="removeTodoItem(item.id)">Delete</button>
+    </td>
   </tr>
   </tbody>
 </table>

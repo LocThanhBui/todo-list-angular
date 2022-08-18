@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TodoModel} from "../model/todo.model";
+import {Component, OnInit} from '@angular/core';
 import {TodoService} from "../services/todo.service";
+import {TodoModel} from "../model/todo.model";
 
 @Component({
   selector: 'app-todo-list',
@@ -8,9 +8,11 @@ import {TodoService} from "../services/todo.service";
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-  @Input() todoList!: TodoModel[];
-  @Output() deleteTodoItem = new EventEmitter<number>();
+  // @Input() todoList!: TodoModel[];
+  // @Output() deleteTodoItem = new EventEmitter<number>();
 
+
+  todoList!: TodoModel[];
 
   constructor(
     private todoService: TodoService,
@@ -18,12 +20,19 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todoService.shareTodoValue$.subscribe( )
+    this.todoService.shareTodoValue$.subscribe(value => (this.todoList = value))
   }
 
-
-  delete(id: number): void {
-    this.deleteTodoItem.emit(id);
+  removeTodoItem(id: number): void {
+    for (let i = 0; i < this.todoList.length; i++) {
+      if (this.todoList[i].id === id) {
+        this.todoList.splice(i, 1)
+      }
+    }
   }
+
+  // delete(id: number): void {
+  //   this.deleteTodoItem.emit(id);
+  // }
 
 }
